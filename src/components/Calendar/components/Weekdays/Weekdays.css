@@ -1,0 +1,38 @@
+.days-row {
+  padding: 0px 5px;
+  grid-area: 1 / 2 / 2 / 3;
+  display: grid;
+  border-bottom: 1px solid black;
+  box-sizing: border-box;
+}
+
+.day-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border-right: 1px solid black;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.day-item:last-child {
+  border-right: none;
+}
+
+.day-item:first-child {
+  border-left: 1px solid black;
+}
+
+.day-division {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.divisions {
+  border-right: 1px dashed gray;
+}
+
+.day-item:last-child .day-division {
+  border-right: none;
+}

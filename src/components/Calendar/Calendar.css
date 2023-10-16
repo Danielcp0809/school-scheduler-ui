@@ -1,0 +1,27 @@
+.calendar-grid {
+  margin: 30px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  border: 1px solid black;
+  box-sizing: border-box;
+  height: 90vh;
+}
+
+.layout {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.empty-cell {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.class-time {
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
