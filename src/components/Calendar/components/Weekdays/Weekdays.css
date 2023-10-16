@@ -4,6 +4,7 @@
   display: grid;
   border-bottom: 1px solid black;
   box-sizing: border-box;
+  /* border-left: 1px solid black; */
 }
 
 .day-item {
@@ -18,10 +19,6 @@
 
 .day-item:last-child {
   border-right: none;
-}
-
-.day-item:first-child {
-  border-left: 1px solid black;
 }
 
 .day-division {

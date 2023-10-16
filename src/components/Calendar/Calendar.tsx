@@ -98,7 +98,7 @@ function Calendar(props: CalendarProps) {
         isDraggable={true}
         isResizable={true}
         preventCollision={true}
-        allowOverlap={true}
+        allowOverlap={false}
         className="layout"
         layout={layout}
         margin={[layoutGap, layoutGap]}
