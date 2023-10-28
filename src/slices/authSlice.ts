@@ -9,7 +9,7 @@ export interface LoggedSession {
 const initialState: LoggedSession = {
     user: null,
     token: null,
-    isLoggedIn: false,
+    isLoggedIn: true,
 }
 
 export const authSlice = createSlice({

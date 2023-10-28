@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './routes/App';
+import Navigation from './routes/Navigation';
 import { Provider } from "react-redux";
 import rootReducer from "./reducers/rootReducer";
 import { applyMiddleware, compose, legacy_createStore as createStore } from "redux";
@@ -23,7 +23,7 @@ const store = createStore(rootReducer, composedEnhancers)
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Navigation />
     </Provider>
   </React.StrictMode>
 );
