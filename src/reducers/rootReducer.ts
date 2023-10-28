@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
-import authSlice from "../slices/authSlice";
+import authSlice, { LoggedSession } from "../slices/authSlice";
+
+export interface IRootState {
+    auth: LoggedSession
+}
 
 const rootReducer = combineReducers({
     auth: authSlice,

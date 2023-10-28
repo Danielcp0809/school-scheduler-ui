@@ -1,11 +1,10 @@
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { LoggedSession } from "../../slices/authSlice";
+import { IRootState } from "../../reducers/rootReducer";
 
 const Auth = () => {
     const location = useLocation();
-    const isLoggedIn = useSelector((state: LoggedSession) => state.isLoggedIn);
-    console.log(isLoggedIn)
+    const isLoggedIn = useSelector((state: IRootState) => state.auth.isLoggedIn, shallowEqual);
     return (
         isLoggedIn 
             ? <Outlet /> 
