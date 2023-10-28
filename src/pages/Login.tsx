@@ -1,14 +1,10 @@
-import React from 'react';
+import React from "react";
+import LoginForm from "../components/LoginForm/LoginForm";
 
 interface LoginProps {}
-    
 
 function Login(props: LoginProps) {
-    return (
-        <div>
-            LOGIN PAGE
-        </div>
-    );
+  return <LoginForm />;
 }
 
 export default Login;
