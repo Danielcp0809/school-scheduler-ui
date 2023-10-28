@@ -1,8 +1,17 @@
+:root{
+  --primary: #F9F7F7;
+  --secondary: #DBE2EF;
+  --primary-dark: #3F72AF;
+  --secondary-dark: #112D4E;
+
+  --message-error: #FF0000;
+  --message-warning: #FFA500;
+  --message-ok: #008000;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
