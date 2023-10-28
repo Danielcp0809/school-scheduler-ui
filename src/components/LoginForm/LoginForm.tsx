@@ -57,6 +57,7 @@ function LoginForm(props: LoginProps) {
 
       // get the auth data from the response
       const token = response.data.access_token;
+      const refreshToken = response.data.refresh_token;
       const user = response.data.user;
 
       // reset the form and loading states
@@ -65,7 +66,7 @@ function LoginForm(props: LoginProps) {
       setIsLoading(false);
 
       // set the login session in the redux store
-      dispatch(setLoginSession({ token, user }));
+      dispatch(setLoginSession({ token, user, refreshToken }));
 
       // if there was a redirect path, navigate to it otherwise navigate to the home page
       navigate(from, { replace: true });

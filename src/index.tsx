@@ -18,7 +18,7 @@ const altCompose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ as typeof compose
 
 const composedEnhancers = altCompose(applyMiddleware(logger)) 
 
-const store = createStore(rootReducer, composedEnhancers)
+export const store = createStore(rootReducer, composedEnhancers)
 
 root.render(
   <React.StrictMode>
