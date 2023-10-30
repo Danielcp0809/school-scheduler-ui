@@ -1,5 +1,5 @@
 import { store } from '../index'
-import { setLoginSession, setLogoutSession, setNewTokenData } from '../slices/authSlice';
+import { setLogoutSession, setNewTokenData } from '../slices/authSlice';
 /**
  * Returns the refresh token
  */

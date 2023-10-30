@@ -1,0 +1,134 @@
+.sidebar{
+    width: 250px;
+    border-radius: 0px 10px 10px 0px;
+    background-color: var(--primary-dark);;
+    box-sizing: initial;
+    transition: width 0.1s;
+}
+
+.sidebar.active{
+    width: 80px;
+    overflow: hidden;
+}
+
+.sidebar ul{
+    width: 100%;
+    padding-top: 40px;
+    padding-left: 10px;
+}
+
+.sidebar ul li {
+    position: relative;
+    list-style: none;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.sidebar ul li.active{
+    background-color: white;
+}
+
+.sidebar ul li b:nth-child(1){
+    position: absolute;
+    top: -20px;
+    height: 20px;
+    width: 100%;
+    background-color: white;
+    display: none;
+}
+
+.sidebar ul li b:nth-child(1)::before{
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(100% - 10px);
+    height: 100%;
+    background-color: var(--primary-dark);
+    border-bottom-right-radius: 20px;
+}
+
+.sidebar ul li b:nth-child(2){
+    position: absolute;
+    bottom: -20px;
+    height: 20px;
+    width: 100%;
+    background-color: white;
+    display: none;
+}
+
+.sidebar ul li b:nth-child(2)::before{
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: calc(100% - 10px);
+    height: 100%;
+    background-color: var(--primary-dark);
+    border-top-right-radius: 20px;
+}
+
+.sidebar ul li.active b:nth-child(1),
+.sidebar ul li.active b:nth-child(2){
+    display: block;
+}
+
+.sidebar ul li a{
+    position: relative;
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}
+
+.sidebar ul li.active a{
+    color: var(--primary-dark);
+}
+
+.sidebar ul li a .icon-container{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.sidebar ul li a .icon-container .icon{
+    position: relative;
+    font-size: 1.5em;
+}
+
+.sidebar ul li a .title{
+    position: relative;
+    padding-left: 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.toggle-menu{
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 25px;
+    color: var(--primary-dark);
+}
+
+.toggle-menu.active{
+    background-color: var(--primary-dark);
+}
+
+.toggle-menu.active .icon{
+    color: white;
+    position: absolute;
+}
