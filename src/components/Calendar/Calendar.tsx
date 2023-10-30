@@ -57,7 +57,6 @@ function Calendar(props: CalendarProps) {
   }, []);
 
   useEffect(() => {
-    console.log("isMenuOpen", isMenuOpen)
     setTimeout(() => {
       updateContainerHeight();
     }, 100)
