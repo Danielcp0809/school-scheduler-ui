@@ -5,6 +5,8 @@ import "react-resizable/css/styles.css";
 import Hours from "./components/Hours/Hours";
 import Weekdays from "./components/Weekdays/Weekdays";
 import "./Calendar.css";
+import { useSelector } from "react-redux";
+import { IRootState } from "../../reducers/rootReducer";
 
 interface CalendarProps {}
 
@@ -42,35 +44,9 @@ function Calendar(props: CalendarProps) {
   const [dayHeight, setDayHeight] = useState(0);
   const [dayHeaderSize, setDayHeaderSize] = useState([0, 0]);
 
+  const isMenuOpen = useSelector((state: IRootState) => state.app.isMenuOpen);
+
   useEffect(() => {
-    const updateContainerHeight = () => {
-      const calendarContainer = document.getElementById("calendar-grid");
-      const calendarHeader = document.getElementById("days-row");
-      const hoursColumn = document.getElementById("hours-column");
-      const hoursItems = document.getElementById("hour-item");
-      const daysItem = document.getElementById("day-item");
-      if (calendarContainer && calendarHeader) {
-        const calendarContainerHeight =
-          calendarContainer.clientHeight - calendarHeader.clientHeight;
-        const rowHeightValue =
-          ((calendarContainerHeight - layoutGap) / hours.length -
-            layoutGap * divisionsPerHour) /
-          divisionsPerHour;
-        setRowHeight(rowHeightValue);
-        setDayHeight(calendarContainerHeight);
-      }
-      if (calendarContainer && hoursColumn) {
-        setBreakWidth(calendarContainer.clientWidth - hoursColumn.clientWidth);
-      }
-      if (hoursItems) {
-        setHoursColumnSize([hoursItems.clientWidth, hoursItems.clientHeight]);
-      }
-
-      if (daysItem) {
-        setDayHeaderSize([daysItem.clientWidth, daysItem.clientHeight]);
-      }
-    };
-
     updateContainerHeight();
 
     window.addEventListener("resize", updateContainerHeight);
@@ -79,6 +55,41 @@ function Calendar(props: CalendarProps) {
       window.removeEventListener("resize", updateContainerHeight);
     };
   }, []);
+
+  useEffect(() => {
+    console.log("isMenuOpen", isMenuOpen)
+    setTimeout(() => {
+      updateContainerHeight();
+    }, 100)
+  }, [isMenuOpen])
+
+  const updateContainerHeight = () => {
+    const calendarContainer = document.getElementById("calendar-grid");
+    const calendarHeader = document.getElementById("days-row");
+    const hoursColumn = document.getElementById("hours-column");
+    const hoursItems = document.getElementById("hour-item");
+    const daysItem = document.getElementById("day-item");
+    if (calendarContainer && calendarHeader) {
+      const calendarContainerHeight =
+        calendarContainer.clientHeight - calendarHeader.clientHeight;
+      const rowHeightValue =
+        ((calendarContainerHeight - layoutGap) / hours.length -
+          layoutGap * divisionsPerHour) /
+        divisionsPerHour;
+      setRowHeight(rowHeightValue);
+      setDayHeight(calendarContainerHeight);
+    }
+    if (calendarContainer && hoursColumn) {
+      setBreakWidth(calendarContainer.clientWidth - hoursColumn.clientWidth);
+    }
+    if (hoursItems) {
+      setHoursColumnSize([hoursItems.clientWidth, hoursItems.clientHeight]);
+    }
+
+    if (daysItem) {
+      setDayHeaderSize([daysItem.clientWidth, daysItem.clientHeight]);
+    }
+  };
 
   return (
     <div id="calendar-grid" className="calendar-grid">

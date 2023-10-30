@@ -1,11 +1,10 @@
 .calendar-grid {
-  margin: 30px;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
   border: 1px solid black;
   box-sizing: border-box;
-  height: 90vh;
+  height: calc(95vh - 70px);
 }
 
 .layout {
