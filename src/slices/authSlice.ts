@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IAuthUser } from '../interfaces/authUser.interface';
 
 export interface LoggedSession {
-    user?: any | null;
+    user?: IAuthUser | null;
     token?: string | null,
     refreshToken?: string | null,
     isLoggedIn?: boolean,
