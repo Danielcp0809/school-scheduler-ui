@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getAccessToken, getRefreshToken, logoutUser, setTokenData } from './AuthService';
+import { IRefreshTokenInterface } from '../interfaces/refreshToken.interface';
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3030'
 
 const authAPI = axios.create({
@@ -9,6 +10,17 @@ const authAPI = axios.create({
     },
     withCredentials: true
 })
+
+export const setNewCredentials = async() => {
+    const newTokenData = await refreshToken(getRefreshToken() ?? '')
+    if(!newTokenData.access_token) {
+        logoutUser();
+        // TODO: show pop up.
+        return
+    }
+    setTokenData(newTokenData.access_token, newTokenData.refresh_token)
+    return newTokenData;
+}
 
 authAPI.interceptors.request.use(
     config => {
@@ -25,13 +37,8 @@ authAPI.interceptors.response.use(
     response => response,
     async (error) => {
         const previousRequest = error?.config;
-        const newTokenData = await refreshToken(getRefreshToken() ?? '')
-        if(!newTokenData.access_token) {
-            logoutUser();
-            // TODO: show pop up.
-            return
-        }
-        setTokenData(newTokenData.access_token ?? null, newTokenData.refresh_token ?? null)
+        const newTokenData = await setNewCredentials();
+        if(!newTokenData) return;
         if (error?.response?.status !== 403 && !previousRequest?.sent) {
             previousRequest.sent = true;
             previousRequest.headers['Authorization'] = `Bearer ${newTokenData.access_token}`;
@@ -52,12 +59,13 @@ export const sessionLoginUser = async (username: string, password: string) => {
 }
 
 export const refreshToken = async (refreshToken: string) => {
-    const response = await axios.post(`${API_URL}/auth/refresh`, {
+    const response = await axios.post<IRefreshTokenInterface>(`${API_URL}/auth/refresh`, {
         refresh_token: refreshToken
     });
     return response.data;
 }
 
+// AUTHORIZED API CALLS
 export const getTeachers = async () => {
     const response = await authAPI.get('/teachers');
     return response;
