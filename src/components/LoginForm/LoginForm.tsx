@@ -10,7 +10,6 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
 import { sessionLoginUser } from "../../services/Api";
-import { AxiosError } from "axios";
 
 import "./LoginForm.css";
 import { useDispatch } from "react-redux";

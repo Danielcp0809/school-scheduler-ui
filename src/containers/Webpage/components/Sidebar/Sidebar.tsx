@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   IconDefinition,
   faBars,
   faBook,
   faCalendarDays,
   faChalkboardUser,
-  faClose,
   faPeopleGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
