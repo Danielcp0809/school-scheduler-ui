@@ -6,6 +6,7 @@ import {
   FormControl,
   Button,
   LinearProgress,
+  Card,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -86,60 +87,62 @@ function LoginForm(props: LoginProps) {
 
   return (
     <div className="login-container">
-      <h1>Sign In</h1>
-      <form>
-        <div className="inputs-container">
-          <FormControl>
-            <TextField
-              className="input"
-              label="Username or email"
-              id="login-username"
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setUsername(event.target.value);
-              }}
-            />
-          </FormControl>
-          <FormControl>
-            <TextField
-              className="input"
-              label="Password"
-              id="login-password"
-              type={showPassword ? "text" : "password"}
-              onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-                setPassword(event.target.value);
-              }}
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <IconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </IconButton>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </FormControl>
-        </div>
-        <Button
-          className="submit-button"
-          disabled={submitDisabled()}
-          variant="contained"
-          onClick={handleClickSignIn}
-        >
-          Sign in
-        </Button>
-        <div style={{ minHeight: 4, marginTop: 10 }}>
-          {isLoading && <LinearProgress />}
-        </div>
-        <div className="error-container">
-          {errorMessage && <label>{errorMessage}</label>}
-        </div>
-      </form>
+      <Card className="login-card">
+        <h1>Inicio de Sesion</h1>
+        <form>
+          <div className="inputs-container">
+            <FormControl>
+              <TextField
+                className="input"
+                label="Usuario o email"
+                id="login-username"
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  setUsername(event.target.value);
+                }}
+              />
+            </FormControl>
+            <FormControl>
+              <TextField
+                className="input"
+                label="Contraseña"
+                id="login-password"
+                type={showPassword ? "text" : "password"}
+                onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+                  setPassword(event.target.value);
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </FormControl>
+          </div>
+          <Button
+            className="submit-button"
+            disabled={submitDisabled()}
+            variant="contained"
+            onClick={handleClickSignIn}
+          >
+            Iniciar
+          </Button>
+          <div style={{ minHeight: 4, marginTop: 10 }}>
+            {isLoading && <LinearProgress />}
+          </div>
+          <div className="error-container">
+            {errorMessage && <label>{errorMessage}</label>}
+          </div>
+        </form>
+      </Card>
     </div>
   );
 }
