@@ -1,0 +1,41 @@
+.view-container{
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.view-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.view-header .title, 
+.view-header .action-buttons{
+    display: flex;
+    gap: 10px;
+}
+
+.action-buttons{
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+.view-children-container{
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    .view-container{
+       padding-left: 10px;  
+       padding-right: 10px; 
+    }
+
+    .view-header{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .action-buttons{
+        justify-content: start;
+    }
+}
