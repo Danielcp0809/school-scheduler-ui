@@ -132,3 +132,24 @@
     color: white;
     position: absolute;
 }
+
+@media (max-width: 600px) {
+    .sidebar.active{
+        display: none;
+    }
+
+    .sidebar{
+        position: fixed;
+        z-index: 100;
+        height: 100vh;
+    }
+
+    .sidebar ul li.active {
+        width: 96%;
+    }
+
+    .sidebar ul li b:nth-child(2)::before,
+    .sidebar ul li b:nth-child(1)::before{
+        width: 100%;
+    }
+}

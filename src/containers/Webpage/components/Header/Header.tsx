@@ -4,8 +4,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { IRootState } from "../../../../reducers/rootReducer";
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { setLogoutSession } from "../../../../slices/authSlice";
+import { setMenuOpen } from "../../../../slices/appSlice";
 
 interface HeaderProps {}
 
@@ -18,6 +19,9 @@ function Header(props: HeaderProps) {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setUserProfileAnchorEl(event.currentTarget);
   };
+  const isMenuOpen =
+    useSelector((state: IRootState) => state.app.isMenuOpen) ?? false;
+
   const handleClose = () => {
     setUserProfileAnchorEl(null);
   };
@@ -26,9 +30,16 @@ function Header(props: HeaderProps) {
     handleClose();
     dispatch(setLogoutSession())
   }
+
+  const handleOpenSidebar = () => {
+    dispatch(setMenuOpen({ isMenuOpen: !isMenuOpen }))
+  }
   return (
     <div className="header">
-      <h2>Horarios</h2>
+      <div className="title" style={{width: 30}}>
+        <FontAwesomeIcon className="open-sidebar-icon" icon={faBars} onClick={handleOpenSidebar} />
+        <h2>Horarios</h2>
+      </div>
       <Button
         className="user-profile-button"
         id="user-profile-button"
@@ -42,7 +53,7 @@ function Header(props: HeaderProps) {
             {user?.first_name[0]}
             {user?.last_name[0]}
           </Avatar>
-          <div className="header__info">
+          <div className="header_info">
             <h4>
               {user?.first_name} {user?.last_name}
             </h4>

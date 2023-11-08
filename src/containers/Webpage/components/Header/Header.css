@@ -6,12 +6,30 @@
     justify-content: space-between;
 }
 
-.header h2{
+.open-sidebar-icon{
+    display: none;
+    font-size: 25px;
+}
+
+.header .title{
+    display: flex;
+    align-items: center;
     margin-left: 20px;
+    gap: 10px;
 }
 
 .user-profile-button{
     margin-right: 20px !important;
     display: flex;
     gap: 10px;
+}
+
+.header_info{
+    color: black;
+}
+
+@media (max-width: 600px) {
+    .open-sidebar-icon{
+        display: block;
+    }
 }

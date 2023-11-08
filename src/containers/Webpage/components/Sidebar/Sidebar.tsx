@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   IconDefinition,
   faBars,
   faBook,
   faCalendarDays,
   faChalkboardUser,
+  faGear,
   faPeopleGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -49,6 +50,12 @@ const sidebarOptions: SidebarItems[] = [
     icon: faBook,
     path: "materias",
   },
+  {
+    id: 5,
+    label: "Configuración",
+    icon: faGear,
+    path: "configuracion",
+  },
 ];
 
 function Sidebar(props: SidebarProps) {
@@ -57,6 +64,20 @@ function Sidebar(props: SidebarProps) {
   const isMenuOpen =
     useSelector((state: IRootState) => state.app.isMenuOpen) ?? false;
 
+  useEffect(() => {
+      const handleResize = () => {
+        if (window.innerWidth < 768) {
+          dispatch(setMenuOpen({ isMenuOpen: true }));
+        } else {
+          dispatch(setMenuOpen({ isMenuOpen: false }));
+        }
+      };
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, [])  
   return (
     <div className={`sidebar ${isMenuOpen ? "active" : ""}`}>
       <div
