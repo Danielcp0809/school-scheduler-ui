@@ -5,6 +5,7 @@ import { CssBaseline } from "@mui/material";
 
 export enum themePallete {
   background = "#f5f9fd",
+  primary = "#264a82",
 }
 
 const theme = createTheme({
@@ -17,11 +18,27 @@ const theme = createTheme({
     }
   },
   components:{
+    MuiContainer:{
+      defaultProps:{
+        style:{
+          maxWidth: "100%",
+        }
+      }
+    },
+    MuiGrid:{
+      defaultProps:{
+        style:{
+          margin:0,
+          width: "100%",
+        }
+      }
+    },
     MuiButton:{
       defaultProps:{
         style:{
           textTransform: "none",
           borderRadius: "15px",
+          maxHeight: "40px",
         }
       }
     },
