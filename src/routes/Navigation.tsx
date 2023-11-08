@@ -7,6 +7,7 @@ import Auth from "../containers/Auth/Auth";
 import Courses from "../pages/Courses";
 import Teachers from "../pages/Teachers";
 import Subjects from "../pages/Subjects";
+import Settings from "../pages/Settings";
 
 const Navigation = () => {
   return (
@@ -31,8 +32,12 @@ const Navigation = () => {
               <Route path="/profesores" element={<Teachers />} />
             </Route>
 
-            <Route element={<Auth />}>
+            <Route element={<Auth />}>ß
               <Route path="/materias" element={<Subjects />} />
+            </Route>
+
+            <Route element={<Auth />}>
+              <Route path="/configuracion" element={<Settings />} />
             </Route>
         </Routes>
       </Layout>
