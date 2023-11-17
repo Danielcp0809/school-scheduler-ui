@@ -37,14 +37,15 @@ authAPI.interceptors.response.use(
     response => response,
     async (error) => {
         const previousRequest = error?.config;
-        const newTokenData = await setNewCredentials();
-        if(!newTokenData) return;
-        if (error?.response?.status !== 403 && !previousRequest?.sent) {
-            previousRequest.sent = true;
-            previousRequest.headers['Authorization'] = `Bearer ${newTokenData.access_token}`;
+        if(error?.response?.status === 401) {
+            const newTokenData = await setNewCredentials();
+            if(!newTokenData) return;
+            if (error?.response?.status !== 403 && !previousRequest?.sent) {
+                previousRequest.sent = true;
+                previousRequest.headers['Authorization'] = `Bearer ${newTokenData.access_token}`;
+            }
             return authAPI(previousRequest);
         }
-
         return Promise.reject(error)
     }
 )
@@ -69,4 +70,9 @@ export const refreshToken = async (refreshToken: string) => {
 export const getTeachers = async () => {
     const response = await authAPI.get('/teachers');
     return response;
+}
+
+export const updateSchoolInfo = async (schoolId: string, schoolInfo: any) => {
+    const response = await authAPI.put(`/schools/${schoolId}`, schoolInfo);
+    return response
 }

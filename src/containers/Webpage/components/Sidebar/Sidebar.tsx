@@ -77,7 +77,7 @@ function Sidebar(props: SidebarProps) {
       return () => {
         window.removeEventListener('resize', handleResize);
       };
-    }, [])  
+    }, [dispatch])  
   return (
     <div className={`sidebar ${isMenuOpen ? "active" : ""}`}>
       <div
