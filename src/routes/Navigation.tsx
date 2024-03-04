@@ -15,30 +15,29 @@ const Navigation = () => {
       <Layout>
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route element={<Auth />}>
+            <Route path="/" element={<Navigate to="/horarios" replace />} />
+          </Route>
 
-            <Route element={<Auth />}>
-              <Route path="/" element={<Navigate to="/horarios" replace />} />
-            </Route>
+          <Route element={<Auth />}>
+            <Route path="/horarios" element={<Scheduler />} />
+          </Route>
 
-            <Route element={<Auth />}>
-              <Route path="/horarios" element={<Scheduler />} />
-            </Route>
+          <Route element={<Auth />}>
+            <Route path="/cursos" element={<Courses />} />
+          </Route>
 
-            <Route element={<Auth />}>
-              <Route path="/cursos" element={<Courses />} />
-            </Route>
+          <Route element={<Auth />}>
+            <Route path="/profesores" element={<Teachers />} />
+          </Route>
 
-            <Route element={<Auth />}>
-              <Route path="/profesores" element={<Teachers />} />
-            </Route>
+          <Route element={<Auth />}>
+            <Route path="/materias" element={<Subjects />} />
+          </Route>
 
-            <Route element={<Auth />}>ß
-              <Route path="/materias" element={<Subjects />} />
-            </Route>
-
-            <Route element={<Auth />}>
-              <Route path="/configuracion" element={<Settings />} />
-            </Route>
+          <Route element={<Auth />}>
+            <Route path="/configuracion" element={<Settings />} />
+          </Route>
         </Routes>
       </Layout>
     </BrowserRouter>

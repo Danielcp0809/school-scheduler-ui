@@ -11,7 +11,7 @@ function Courses(props: CoursesProps) {
       icon={faChalkboardUser}
       description="Crea y modifica las cursos de tu escuela."
     >
-
+      <div></div>
     </View>
   );
 }

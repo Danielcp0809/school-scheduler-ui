@@ -27,6 +27,7 @@ import FormInputText from "../components/FormComponents/FormInputText";
 import { updateSchoolInfo } from "../services/Api";
 import toast from "react-hot-toast";
 import { setSchoolInfo } from "../slices/authSlice";
+import SettingsList from "../components/SettingsList/SettingsList";
 
 interface ISchoolFormData {
   name: string;
@@ -215,6 +216,13 @@ function Settings() {
           </CardContent>
         </Card>
       )}
+
+      <Typography variant="h5">
+        Tipos de horarios
+      </Typography>
+      
+      <SettingsList />
+
     </View>
   );
 }
